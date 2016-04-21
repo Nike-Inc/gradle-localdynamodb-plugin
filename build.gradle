@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'groovy'
+
+group = 'com.nike.retail'
+
+repositories {
+  jcenter()
+  maven { url "http://dynamodb-local.s3-website-us-west-2.amazonaws.com/release" }
+}
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+    compile('com.amazonaws:DynamoDBLocal:1.10.5.1') {
+        exclude group: "org.slf4j", module: "slf4j-log4j12"
+    }
+    compile "org.slf4j:jcl-over-slf4j:1.7.5"
+    compile "org.slf4j:slf4j-simple:1.7.5"
+}
+
+tasks.withType(JavaCompile) {
+    sourceCompatibility = "1.8"
+    targetCompatibility = "1.8"
+}
