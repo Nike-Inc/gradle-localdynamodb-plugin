@@ -2,6 +2,7 @@ package com.nike.retail.common.plugins.gradle.localdynamodb
 
 import com.amazonaws.services.dynamodbv2.local.server.DynamoDBProxyServer
 import com.nike.retail.common.plugins.gradle.localdynamodb.tasks.CopyNativeDependencyTask
+import com.nike.retail.common.plugins.gradle.localdynamodb.tasks.DynamoRunTask
 import com.nike.retail.common.plugins.gradle.localdynamodb.tasks.DynamoStartTask
 import com.nike.retail.common.plugins.gradle.localdynamodb.tasks.DynamoStopTask
 import org.gradle.api.Plugin
@@ -41,6 +42,10 @@ class LocalDynamodbPlugin implements Plugin<Project> {
             .dependsOn "dynamoCopyNativeDependencies"
         project.task("dynamoStop", group: "localdynamodb", type: DynamoStopTask, description: "Stops the Local Dynamo Server")
             .dependsOn "dynamoStart"
+
+        project.task("dynamoRun", group: "localdynamodb", type: DynamoRunTask, description: "Runs a local dynamo server")
+            .dependsOn("dynamoStart")
+            .finalizedBy("dynamoStop")
     }
 
 }

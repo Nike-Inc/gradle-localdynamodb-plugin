@@ -17,14 +17,16 @@ Please configure correct repositories as well.
 
 The plugin adds the following tasks by default. 
 
-+ startDynamo : Starts a dynamo server running in the background on the given port
++ dynamoStart : Starts a dynamo server running in the background on the given port
 
-+ stopDynamo : Starts a dynamo server running in the background on the given port
-        
-+ copyNativeDependencies : Copies all dylib, so, and dll files on the classpath. Specifically needed for Local DynamoDB with SQLLite.
++ dynamoRun : Runs dynamo in a blocking fashion
+
++ dynamoStop : Starts a dynamo server running in the background on the given port
+
++ dynamoCopyNativeDependencies : Copies all dylib, so, and dll files on the classpath. Specifically needed for Local DynamoDB with SQLLite.
 
 ## Configurations
-    
+
 The configuration block is called "cloudformation" and accepts the following configurations:
 
 |Property Name   	| Description |Default Value  	|

@@ -6,9 +6,6 @@ import org.gradle.api.tasks.TaskAction
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
-/**
- * Created by tsout1 on 4/25/16.
- */
 class DynamoStopTask extends DefaultTask {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DynamoStartTask)
