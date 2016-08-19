@@ -20,6 +20,7 @@ class LocalDynamodbPlugin implements Plugin<Project> {
         project.extensions.create(LOCAL_DYNAMO_EXTENSION_NAME, LocalDynamodbPluginExtension)
         project.extensions.getByType(LocalDynamodbPluginExtension).libraryPath = new File(project.buildDir, "libs").absolutePath
 
+        project.apply plugin: "java"
         project.sourceSets {
 
             //create a source set just to track the JNI dependencies of sqllite so we can have access to them for DynamoDB Local
@@ -33,19 +34,13 @@ class LocalDynamodbPlugin implements Plugin<Project> {
             sqllite4javaCompile group: 'com.almworks.sqlite4java', name: 'libsqlite4java-linux-i386', version: '1.0.392'
             sqllite4javaCompile group: 'com.almworks.sqlite4java', name: 'sqlite4java-win32-x64', version: '1.0.392'
             sqllite4javaCompile group: 'com.almworks.sqlite4java', name: 'sqlite4java-win32-x86', version: '1.0.392'
-
-            cloudformationCompile "org.slf4j:slf4j-simple:1.7.5"
         }
 
-        project.afterEvaluate {
-            project.task("copyNativeDependencies", type: CopyNativeDependencyTask, description: "Copies native libraries to a library location to be used by JNI")
-            project.task("dynamoStart", type: DynamoStartTask, description: "Starts the Local Dynamo Server in the background")
-                .dependsOn "copyNativeDependencies"
-            project.task("dynamoStop", type: DynamoStopTask, description: "Stops the Local Dynamo Server")
-                    .dependsOn "dynamoStart"
-            project.task("dynamoPopulate", type: PopulateDynamoTables, description: "Executes classname to populate dynamo")
-                .dependsOn "dynamoStart"
-        }
+        project.task("dynamoCopyNativeDependencies", group: "localdynamodb", type: CopyNativeDependencyTask, description: "Copies native libraries to a library location to be used by JNI")
+        project.task("dynamoStart", group: "localdynamodb", type: DynamoStartTask, description: "Starts the Local Dynamo Server in the background")
+            .dependsOn "dynamoCopyNativeDependencies"
+        project.task("dynamoStop", group: "localdynamodb", type: DynamoStopTask, description: "Stops the Local Dynamo Server")
+            .dependsOn "dynamoStart"
     }
 
 }
