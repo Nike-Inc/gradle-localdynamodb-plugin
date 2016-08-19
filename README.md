@@ -4,7 +4,7 @@
 Add the library `'local-dynamodb-gradle-plugin'` to the classpath of gradle build script
 
     dependencies{
-        classpath 'com.nike.retail:local-dynamodb-gradle-plugin:0.1'
+        classpath 'com.nike.retail:local-dynamodb-gradle-plugin:0.2-SNAPSHOT'
     }
     
 Please configure correct repositories as well.
