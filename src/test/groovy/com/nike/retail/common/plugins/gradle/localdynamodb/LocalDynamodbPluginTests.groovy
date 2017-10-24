@@ -16,7 +16,7 @@ class LocalDynamodbPluginTests {
         Project project = ProjectBuilder.builder()
                 .build()
 
-        project.pluginManager.apply 'com.nike.retail.common.plugins.gradle.localdynamodb'
+        project.pluginManager.apply 'com.nike.localdynamodb'
 
         assertTrue(project.tasks.dynamoStart instanceof DynamoStartTask)
         assertEquals(project.tasks.dynamoStart.group, "localdynamodb")
@@ -27,7 +27,7 @@ class LocalDynamodbPluginTests {
         Project project = ProjectBuilder.builder()
                 .build()
 
-        project.pluginManager.apply 'com.nike.retail.common.plugins.gradle.localdynamodb'
+        project.pluginManager.apply 'com.nike.localdynamodb'
 
         assertTrue(project.tasks.dynamoStop instanceof DynamoStopTask)
         assertEquals(project.tasks.dynamoStop.group, "localdynamodb")
@@ -38,7 +38,7 @@ class LocalDynamodbPluginTests {
         Project project = ProjectBuilder.builder()
                 .build()
 
-        project.pluginManager.apply 'com.nike.retail.common.plugins.gradle.localdynamodb'
+        project.pluginManager.apply 'com.nike.localdynamodb'
 
         assertTrue(project.tasks.dynamoCopyNativeDependencies instanceof CopyNativeDependencyTask)
         assertEquals(project.tasks.dynamoCopyNativeDependencies.group, "localdynamodb")
@@ -49,7 +49,7 @@ class LocalDynamodbPluginTests {
         Project project = ProjectBuilder.builder()
                 .build()
 
-        project.pluginManager.apply 'com.nike.retail.common.plugins.gradle.localdynamodb'
+        project.pluginManager.apply 'com.nike.localdynamodb'
 
         assertTrue(project.tasks.dynamoRun instanceof DynamoRunTask)
         assertEquals(project.tasks.dynamoRun.group, "localdynamodb")

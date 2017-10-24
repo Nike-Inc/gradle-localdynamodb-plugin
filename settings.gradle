@@ -1,2 +1,2 @@
-rootProject.name = 'local-dynamodb-gradle-plugin'
+rootProject.name = 'gradle-localdynamodb-plugin'
 
