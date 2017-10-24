@@ -1,5 +1,7 @@
 # Local DynamoDB Gradle Plugin
 
+[![Build Status](https://travis-ci.com/Nike-Inc/gradle-localdynamodb-plugin.svg?token=PmECSWCH8LFEKNdzr64F&branch=master)](https://travis-ci.com/Nike-Inc/gradle-localdynamodb-plugin)
+
 ## Add to the [Classpath](https://docs.gradle.org/current/userguide/organizing_build_logic.html) of Gradle Build Script
 Add the library `gradle-localdynamodb-plugin'` to the classpath of gradle build script
 
