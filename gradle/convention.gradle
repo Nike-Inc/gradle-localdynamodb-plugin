@@ -1,0 +1,48 @@
+apply plugin: 'idea'
+
+plugins.withType(JavaPlugin) {
+    sourceCompatibility = 1.7
+
+    configurations {
+        provided
+        provided.extendsFrom(compile)
+    }
+
+    sourceSets {
+        main.compileClasspath += configurations.provided
+        test.compileClasspath += configurations.provided
+        test.runtimeClasspath += configurations.provided
+    }
+
+    idea {
+        module {
+            // include 'provided' dependencies on the classpath
+            scopes.PROVIDED.plus += [ configurations.provided ]
+
+            downloadSources = true
+            downloadJavadoc = true
+        }
+    }
+
+    // Create Source Jars
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+    // Create Javadoc Jars
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        classifier = 'javadoc'
+        from javadoc.destinationDir
+    }
+
+    artifacts {
+        archives sourcesJar
+        archives javadocJar
+    }
+}
+
+// Generates Gradle Wrapper
+task createWrapper(type: Wrapper) {
+    gradleVersion = '4.2'
+}

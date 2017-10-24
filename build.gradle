@@ -1,8 +1,17 @@
+plugins {
+    id "com.jfrog.bintray" version "1.7.3"
+    id "pl.droidsonroids.jacoco.testkit" version "1.0.3"
+}
+
 apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'groovy'
+apply plugin: 'java-gradle-plugin'
 
-group = 'com.nike.retail'
+group = 'com.nike.localdynamodb'
+
+apply from: file('gradle/convention.gradle')
+apply from: file('gradle/release.gradle')
 
 repositories {
   jcenter()
@@ -17,6 +26,7 @@ dependencies {
     }
     compile "org.slf4j:jcl-over-slf4j:1.7.5"
     compile "org.slf4j:slf4j-simple:1.7.5"
+    testCompile "junit:junit:4.12"
 }
 
 tasks.withType(JavaCompile) {

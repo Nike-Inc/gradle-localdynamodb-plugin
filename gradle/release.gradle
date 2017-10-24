@@ -1,0 +1,31 @@
+apply plugin: 'maven-publish'
+apply plugin: 'java-library'
+bintray {
+    def bintrayCredentials = new Properties()
+    def credentialsFile = new File(new File(System.getProperty("user.home")), ".bintray/.credentials")
+    if (credentialsFile.exists()) {
+        bintrayCredentials.load(new FileInputStream(credentialsFile))
+    }
+    user = bintrayCredentials.get("user")
+    key = bintrayCredentials.get("password")
+    publish = false
+    publications = ['JarPublication']
+    pkg {
+        repo = 'maven'
+        name = 'gradle-localdynamodb-plugin'
+        userOrg = 'nike'
+        licenses = ['BSD']
+        vcsUrl = 'https://github.com/Nike-Inc/gradle-localdynamodb-plugin.git'
+    }
+}
+
+// Create the publication with the pom configuration:
+publishing {
+    publications {
+        JarPublication(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+        }
+    }
+}
