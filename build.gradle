@@ -26,7 +26,10 @@ dependencies {
     }
     compile "org.slf4j:jcl-over-slf4j:1.7.5"
     compile "org.slf4j:slf4j-simple:1.7.5"
-    testCompile "junit:junit:4.12"
+    testCompile("org.spockframework:spock-core:1.1-groovy-2.4") {
+        exclude module: 'groovy-all'
+    }
+    testCompile group: 'com.amazonaws', name: 'aws-java-sdk-dynamodb', version: '1.11.220'
 }
 
 tasks.withType(JavaCompile) {

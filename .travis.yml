@@ -8,3 +8,4 @@ cache:
     - $HOME/.gradle/wrapper/
 after_success:
   - ./gradlew coveralls
+script: ./gradlew check assemble --info --stacktrace

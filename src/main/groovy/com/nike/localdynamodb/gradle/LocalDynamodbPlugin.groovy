@@ -1,10 +1,16 @@
-package com.nike.retail.common.plugins.gradle.localdynamodb
+/**
+ * Copyright 2017-present, Nike, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree.
+ **/
+package com.nike.localdynamodb.gradle
 
 import com.amazonaws.services.dynamodbv2.local.server.DynamoDBProxyServer
-import com.nike.retail.common.plugins.gradle.localdynamodb.tasks.CopyNativeDependencyTask
-import com.nike.retail.common.plugins.gradle.localdynamodb.tasks.DynamoRunTask
-import com.nike.retail.common.plugins.gradle.localdynamodb.tasks.DynamoStartTask
-import com.nike.retail.common.plugins.gradle.localdynamodb.tasks.DynamoStopTask
+import com.nike.localdynamodb.gradle.tasks.CopyNativeDependencyTask
+import com.nike.localdynamodb.gradle.tasks.DynamoStartTask
+import com.nike.localdynamodb.gradle.tasks.DynamoStopTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.slf4j.Logger
@@ -42,10 +48,6 @@ class LocalDynamodbPlugin implements Plugin<Project> {
             .dependsOn "dynamoCopyNativeDependencies"
         project.task("dynamoStop", group: "localdynamodb", type: DynamoStopTask, description: "Stops the Local Dynamo Server")
             .dependsOn "dynamoStart"
-
-        project.task("dynamoRun", group: "localdynamodb", type: DynamoRunTask, description: "Runs a local dynamo server")
-            .dependsOn("dynamoStart")
-            .finalizedBy("dynamoStop")
     }
 
 }

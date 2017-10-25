@@ -1,18 +1,17 @@
-package com.nike.retail.common.plugins.gradle.localdynamodb
+package com.nike.localdynamodb.gradle
 
-import com.nike.retail.common.plugins.gradle.localdynamodb.tasks.CopyNativeDependencyTask
-import com.nike.retail.common.plugins.gradle.localdynamodb.tasks.DynamoRunTask
-import com.nike.retail.common.plugins.gradle.localdynamodb.tasks.DynamoStartTask
-import com.nike.retail.common.plugins.gradle.localdynamodb.tasks.DynamoStopTask
+import com.nike.localdynamodb.gradle.tasks.CopyNativeDependencyTask
+import com.nike.localdynamodb.gradle.tasks.DynamoStartTask
+import com.nike.localdynamodb.gradle.tasks.DynamoStopTask
 import org.gradle.api.Project
 import org.gradle.testfixtures.ProjectBuilder
 import org.junit.Test
 import static org.junit.Assert.*
 
-class LocalDynamodbPluginTests {
+class LocalDynamodbPluginSpec {
 
     @Test
-    public void localDynamoPluginAddsDynamoStartToProject() {
+    void localDynamoPluginAddsDynamoStartToProject() {
         Project project = ProjectBuilder.builder()
                 .build()
 
@@ -23,7 +22,7 @@ class LocalDynamodbPluginTests {
     }
 
     @Test
-    public void localDynamoPluginAddsDynamoStopToProject() {
+    void localDynamoPluginAddsDynamoStopToProject() {
         Project project = ProjectBuilder.builder()
                 .build()
 
@@ -34,7 +33,7 @@ class LocalDynamodbPluginTests {
     }
 
     @Test
-    public void localDynamoPluginAddsCopyNativeDependencyToProject() {
+    void localDynamoPluginAddsCopyNativeDependencyToProject() {
         Project project = ProjectBuilder.builder()
                 .build()
 
@@ -42,16 +41,5 @@ class LocalDynamodbPluginTests {
 
         assertTrue(project.tasks.dynamoCopyNativeDependencies instanceof CopyNativeDependencyTask)
         assertEquals(project.tasks.dynamoCopyNativeDependencies.group, "localdynamodb")
-    }
-
-    @Test
-    public void localDynamoPluginAddsDynamoRunToProject() {
-        Project project = ProjectBuilder.builder()
-                .build()
-
-        project.pluginManager.apply 'com.nike.localdynamodb'
-
-        assertTrue(project.tasks.dynamoRun instanceof DynamoRunTask)
-        assertEquals(project.tasks.dynamoRun.group, "localdynamodb")
     }
 }
