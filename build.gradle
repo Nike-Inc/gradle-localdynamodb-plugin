@@ -1,6 +1,7 @@
 plugins {
     id "com.jfrog.bintray" version "1.7.3"
     id "pl.droidsonroids.jacoco.testkit" version "1.0.3"
+    id 'com.github.kt3k.coveralls' version '2.8.1'
 }
 
 apply plugin: 'java'
