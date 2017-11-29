@@ -1,6 +1,6 @@
 # Local DynamoDB Gradle Plugin
 
-[![Build Status](https://travis-ci.com/Nike-Inc/gradle-localdynamodb-plugin.svg?token=PmECSWCH8LFEKNdzr64F&branch=master)](https://travis-ci.com/Nike-Inc/gradle-localdynamodb-plugin)
+[![Build Status](https://travis-ci.org/Nike-Inc/gradle-localdynamodb-plugin.svg?branch=master)](https://travis-ci.org/Nike-Inc/gradle-localdynamodb-plugin)
 [ ![Download](https://api.bintray.com/packages/nike/maven/gradle-localdynamodb-plugin/images/download.svg) ](https://bintray.com/nike/maven/gradle-localdynamodb-plugin/_latestVersion)
 
 ## Add to the [Classpath](https://docs.gradle.org/current/userguide/organizing_build_logic.html) of Gradle Build Script
